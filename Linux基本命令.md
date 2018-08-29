@@ -1,17 +1,34 @@
 # 命令提示符
+
+
 > [root@localhost ~]# 
 
 **root**：当前登录用户
+
 **localhost**：主机名
+
 **~**：当前所在的目录，此处为“家”目录
-**#**：root超级用户的提示符，如果是普通用户，则为 $ 命令格式
-命令 [选项] [参数] 中括号 [] 表示可选 查询目录中的内容：ls
-ls [选项] [文件或目录] 选项：
+
+**#**：root超级用户的提示符，如果是普通用户，则为 $ 
+
+# 命令格式
+
+>命令 [选项] [参数]
+
+中括号 [] 表示可选 
+# 查询目录中的内容：ls
+
+
+>ls [选项] [文件或目录] 
+
+选项：
 -a : 显示所有文件，包括隐藏文件
 -l : 显示详细信息
 -d : 查看目录属性
 -h : 人性化显示文件大小
--i : 显示inode 根据以上选项，敲入命令，显示结果分别如下： [root@localhost ~]# ls
+-i : 显示inode 
+
+根据以上选项，敲入命令，显示结果分别如下： [root@localhost ~]# ls
 anaconda-ks.cfg test
 [root@localhost ~]# ls -a
 . .. anaconda-ks.cfg .bash_history .bash_logout .bash_profile .bashrc .cache .config .cshrc .tcshrc test[root@localhost ~]# ls -l
