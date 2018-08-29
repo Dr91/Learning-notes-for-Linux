@@ -3,13 +3,13 @@
 
 > [root@localhost ~]# 
 
-**root**：当前登录用户
+## root：当前登录用户
 
-**localhost**：主机名
+## localhost：主机名
 
-**~**：当前所在的目录，此处为“家”目录
+## ~：当前所在的目录，此处为“家”目录
 
-**#**：root超级用户的提示符，如果是普通用户，则为 $ 
+## #：root超级用户的提示符，如果是普通用户，则为 $ 
 
 # 命令格式
 
@@ -22,11 +22,11 @@
 >ls [选项] [文件或目录] 
 
 选项：
--a : 显示所有文件，包括隐藏文件
--l : 显示详细信息
--d : 查看目录属性
--h : 人性化显示文件大小
--i : 显示inode 
+- -a : 显示所有文件，包括隐藏文件
+- -l : 显示详细信息
+- -d : 查看目录属性
+- -h : 人性化显示文件大小
+- -i : 显示inode 
 
 根据以上选项，敲入命令，显示结果分别如下： 
 
@@ -79,10 +79,10 @@ drwxr-xr-x. 2 root root 6 11月12日 19:26 test
 root 后面的2.7k表示文件的大小，再后面表示日期，最后是文件的名称。 
 
 # 目录处理命令
-##创建目录：mkdir
+## 创建目录：mkdir
 >mkdir -p [目录名] -p : 
 
-##递归创建 
+## 递归创建 
 
 ```
 
@@ -100,7 +100,7 @@ anaconda-ks.cfg folder_2 otherFolder test
 ```
 如上所示，mkdir 不加选项 -p 时，可以创建一个空目录，但是无法递归创建一个包含子目录的目录。加上 -p 即可递归创建。 
 
-##切换所在目录：cd
+## 切换所在目录：cd
 >cd [目录] 
 
 操作： 
@@ -125,7 +125,7 @@ anaconda-ks.cfg folder_2 otherFolder test
 [root@localhost otherFolder]# cd ..
 [root@localhost ~]#
 ```
-###注意理清概念：相对路径和绝对路径 
+### 注意理清概念：相对路径和绝对路径 
 
 绝对路径：从根目录一级级找下去，需要写全路径 
 
@@ -141,7 +141,7 @@ anaconda-ks.cfg folder_2 otherFolder test
 [root@localhost otherFolder]#
 ```
 
-##查询所在目录位置：pwd
+## 查询所在目录位置：pwd
 >pwd 
 
 可以说是最简单的命令了，查询所在目录的位置 
@@ -159,7 +159,7 @@ test_2
 [root@localhost test_2]# pwd/root/folder_2/test_2
 ```
 
-##删除空目录：rmdir
+# 删除空目录：rmdir
 >rmdir [目录名] 
 
 只能删除空目录，这个命令用得比较少。 
@@ -176,7 +176,7 @@ rmdir: 删除 "folder_2" 失败: 目录非空
 [root@localhost ~]#
 ```
 
-##删除文件或目录：rm
+# 删除文件或目录：rm
 >rm -rf [文件或目录] 
 
 r 表示可以同时删除文件和目录，f表示强制删除 
@@ -205,7 +205,7 @@ anaconda-ks.cfg
 [root@localhost ~]#
 ```
 
-##复制命令：cp
+# 复制命令：cp
 >cp [选项] [原文件或目录] [目标目录] 
 
 选项：
@@ -248,8 +248,12 @@ drwxr-xr-x. 2 root root 6 11月13日 17:38 test_1
 
 在上述命令中，ll 是 ls -l 的简写。 
 
-##剪切或改名命令：mv
-mv [原文件或目录] [目标目录] 如果原文件或者目录 与 目标目录在同一个目录下，那么就是重命名 如果不在同一个目录下，那么就是剪切 通过以下实践理解： [root@localhost ~]# ls
+# 剪切或改名命令：mv
+mv [原文件或目录] [目标目录] 
+- 如果原文件或者目录 与 目标目录在同一个目录下，那么就是重命名 
+- 如果不在同一个目录下，那么就是剪切 通过以下实践理解： 
+```
+[root@localhost ~]# ls
 anaconda-ks.cfg bbc.txt
 [root@localhost ~]# mv bbc.txt abc.txt
 [root@localhost ~]# ls
@@ -263,9 +267,28 @@ anaconda-ks.cfg test
 [root@localhost ~]# ls test/
 abc.txt
 [root@localhost ~]#
-链接命令：ln
-ln -s [原文件] [目标文件] 生成链接文件
--s : 创建软连接 硬链接的特征： 拥有相同 i 节点和存储block块，可以看做是同一个文件 可通过i节点识别，i节点是相同的 不能跨分区 不能针对目录使用 通过上述命令，可以理解为为某个内容添加一个标签，通过打开这个标签就可以进入这个内容，硬连接，即再生成一个标签，同样可以通过这个标签进入这个内容。 如果内容被修改，那么不管从硬链接的哪个文件进入，都是被修改的。 软链接的特征： 类似windows的快捷方式 软链接拥有自己的i节点和block块，但是数据块只保存原文件的文件名和I节点号，并没有实际的文件数据 lrwxrwxrwx l为软链接（软链接的权限都为rwxrwxrwx，这只是软链接本身的权限） 修改任意文件，另一个都改变 删除原文件，软链接不能用（和windows的快捷方式一样） 硬链接： [root@localhost ~]# ls
+```
+# 链接命令：ln
+>ln -s [原文件] [目标文件] 
+生成链接文件
+####### -s : 创建软连接 
+## 硬链接的特征： 
+- 拥有相同 i 节点和存储block块，可以看做是同一个文件 
+- 可通过i节点识别，i节点是相同的 
+- 不能跨分区 
+- 不能针对目录使用 
+通过上述命令，可以理解为为某个内容添加一个标签，通过打开这个标签就可以进入这个内容，硬连接，即再生成一个标签，同样可以通过这个标签进入这个内容。 
+如果内容被修改，那么不管从硬链接的哪个文件进入，都是被修改的。 
+## 软链接的特征： 
+- 类似windows的快捷方式 
+- 软链接拥有自己的i节点和block块，但是数据块只保存原文件的文件名和I节点号，并没有实际的文件数据 
+- **lrwxrwxrwx** l为软链接（软链接的权限都为rwxrwxrwx，这只是软链接本身的权限） 
+- 修改任意文件，另一个都改变 
+- 删除原文件，软链接不能用（和windows的快捷方式一样） 
+
+硬链接： 
+```
+[root@localhost ~]# ls
 anaconda-ks.cfg
 [root@localhost ~]# mkdir folder
 [root@localhost ~]# ls
@@ -277,7 +300,10 @@ anaconda-ks.cfg bbb.txt folder
 [root@localhost ~]# ll folder/ 总用量 0
 -rw-r--r--. 2 root root 0 11月13日 18:08 ccc.txt
 [root@localhost ~]# ll bbb.txt -rw-r--r--. 2 root root 0 11月13日 18:08 bbb.txt
-软链接： [root@localhost ~]# mkdir folder_b
+```
+软链接： 
+```
+[root@localhost ~]# mkdir folder_b
 [root@localhost ~]# ln -s bbb.txt folder_b/eee.txt
 [root@localhost ~]# ll 总用量 4
 -rw-------. 1 root root 2752 11月10日 02:51 anaconda-ks.cfg
@@ -290,8 +316,26 @@ lrwxrwxrwx. 1 root root 7 11月13日 18:11 eee.txt -> bbb.txt
 [root@localhost ~]# rm -rf bbb.txt [root@localhost ~]# ll folder_b
 总用量 0
 lrwxrwxrwx. 1 root root 7 11月13日 18:11 eee.txt -> bbb.txt
-删除了原文件，软链接的箭头目标为红色一闪一闪，表示找不到目标文件。 常用目录作用
+```
+删除了原文件，软链接的箭头目标为红色一闪一闪，表示找不到目标文件。 
+#常用目录作用
+```
 [root@localhost ~]# ls /
 bin boot dev etc home lib lib64 media mnt opt proc root run sbin srv sys temp tmp usr var
-/ 根目录 /bin 命令保存目录（普通用户权限） /sbin 命令保存目录（root权限） /boot 启动目录，包含启动相关文件，和开机有关 /dev 设备文件保存目录 /etc 配置文件保存目录 /home 普通用户家目录 /lib 系统库保存目录 /mnt 系统挂载目录 /media 挂载目录（常用于光盘挂载） /root 超级用户家目录 /tmp 临时目录 /proc 直接写入内存的 /sys 直接写入内存的 /usr 系统软件资源目录 /var 系统相关文档内容
+```
+* / 根目录 /bin 命令保存目录（普通用户权限） 
+* /sbin 命令保存目录（root权限） 
+* /boot 启动目录，包含启动相关文件，和开机有关 
+* /dev 设备文件保存目录 
+* /etc 配置文件保存目录 
+* /home 普通用户家目录 
+* /lib 系统库保存目录 
+* /mnt 系统挂载目录 
+* /media 挂载目录（常用于光盘挂载） 
+* /root 超级用户家目录 
+* /tmp 临时目录 
+* /proc 直接写入内存的 
+* /sys 直接写入内存的 
+* /usr 系统软件资源目录 
+* /var 系统相关文档内容
 
