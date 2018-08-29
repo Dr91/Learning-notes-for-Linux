@@ -15,9 +15,9 @@
 
 >命令 [选项] [参数]
 
-中括号 [] 表示可选 # 查询目录中的内容：ls
+中括号 [] 表示可选 
 
-
+# 查询目录中的内容：ls
 
 >ls [选项] [文件或目录] 
 
@@ -28,7 +28,10 @@
 -h : 人性化显示文件大小
 -i : 显示inode 
 
-根据以上选项，敲入命令，显示结果分别如下： [root@localhost ~]# ls
+根据以上选项，敲入命令，显示结果分别如下： 
+
+```
+[root@localhost ~]# ls
 anaconda-ks.cfg test
 [root@localhost ~]# ls -a
 . .. anaconda-ks.cfg .bash_history .bash_logout .bash_profile .bashrc .cache .config .cshrc .tcshrc test[root@localhost ~]# ls -l
@@ -44,6 +47,7 @@ drwxr-xr-x. 2 root root 6 11月12日 19:26 test/
 drwxr-xr-x. 2 root root 6 11月12日 19:26 test
 [root@localhost ~]# ls -i
 71259104 anaconda-ks.cfg 36099565 test
+```
 请注意观察 ls -l 与 ls -lh 命令的结果的区别 这里需要解释一下： -rw-------. 1 root root 2.7K 11月10日 02:51 anaconda-ks.cfg
 drwxr-xr-x. 2 root root 6 11月12日 19:26 test
 首先第一个符号 “-”（引号内的-），表示文件类型（常用的有三种，即-表示文件，d表示目录，l表示软链接文件），此外还有不常用的，为块设备文件，字符设备文件、套接字文件、管理文件。 在上述中，我们可以看到 anaconda-ks.cfg 是一个文件，而 test 是一个目录（可理解为windows的文件夹的概念）。 其次，除去第一个符号，我们来看rw-------，一共有九个字符，需分为三组，分别为rw-,---,---,每个组按照顺序分别表示u所有者，g所属组,o其他人的权限。在上述中，分别对应为 root，root。即第一个root表示所有者权限为root权限，第二个root表示所属组的权限也是root权限，对于其他人，则无所谓的权限可言。 其中，r表示可读，w表示可写，x表示执行的权限。 为了更加明白，对于 anaconda-ks.cfg 这个文件，这里列一个表格： 前三个字符	中间三个字符	后三个字符
